@@ -10,7 +10,7 @@
  Eulerian Circuit is an Eulerian Path which starts and ends on the same vertex.
  Steps to check Euleran circuit or Path
  1) All vertices with non-zero degree are connected. 
- We don’t care about vertices with zero degree because they don’t belong to Eulerian Cycle or Path 
+ We donâ€™t care about vertices with zero degree because they donâ€™t belong to Eulerian Cycle or Path 
  2) For Eulerian Path-  If zero or two vertices have odd degree and all other vertices have even degree
  For Eulerian Cycle- All vertices have even degree
  */    		            
@@ -49,12 +49,10 @@
  //----------------------------------------My Code------------------------------------------------//
     		   static LinkedList<Integer> adj[];
     		   static boolean Visited[];
-    		   static int deg[];
     		   static int V;
     		   private static void soln() {
    
-    			   
-    			    V=nextInt();
+      			    V=nextInt();
     			   int m=nextInt();
     			   buildGraph();
     			   for(int i=0;i<m;i++){
@@ -62,8 +60,7 @@
     				   int w=nextInt();
     				   adj[v].add(w);
     				   adj[w].add(v);
-    				   deg[v]++;
-    				   deg[w]++;
+    				  
     			   }
     			   
     			   if(isConnected() && isEulerian()){
@@ -88,19 +85,11 @@
     		   }
     // Check if the Graph is connected
     		   private static boolean isConnected(){
-    			   int flag=1;
+
+    			dfs(1);
+    			 
     			   for(int i=1;i<=V;i++){
-    				   if(adj[i].size()>0){ // dfs from vertex with first non zero degree
-    					   dfs(i);
-    					   flag=0;
-    					   break;
-    				   }
-    			   }
-    			   if(flag==1){
-    				   return true;
-    			   }
-    			   for(int i=1;i<=V;i++){
-    				   if(adj[i].size()>0 && Visited[i]==false)//check if every vertex with non zero degree is connected
+    				   if( Visited[i]==false)//check if every vertex with non zero degree is connected
     					   return false;
     			   }
     			return true;
@@ -118,7 +107,7 @@
 		    		
     			   adj=new LinkedList[V+1];
 		    		Visited=new boolean[V+1];
-		    		deg=new int[V+1];
+		 
 		    		for(int i=0;i<=V;i++){
 		    			adj[i]=new LinkedList<Integer>();
 		    		}
